@@ -55,10 +55,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 200,
                 child: Swiper(
                   itemBuilder: (BuildContext context, int index) {
-                    return (Image.asset(
-                      images[index],
-                      fit: BoxFit.fill,
-                    ));
+                    return Hero(
+                        tag: images[index],
+                        child: Image.asset(
+                          images[index],
+                          fit: BoxFit.fill,
+                        ));
                   },
                   itemCount: images.length,
                   duration: 300,
@@ -74,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.grey,
                         activeColor: Colors.white,
                       )),
-                  autoplay: true,
+                  autoplay: false,
                   onTap: (index) {
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: (context) {
