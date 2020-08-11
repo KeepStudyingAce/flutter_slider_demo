@@ -3,6 +3,7 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_controller.dart';
+import 'package:flutter_swiper_demo/photo_viewer.dart';
 
 final List<String> images = [
   'lib/asserts/banner1.png',
@@ -59,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       fit: BoxFit.fill,
                     ));
                   },
-                  itemCount: 3,
+                  itemCount: images.length,
                   duration: 300,
                   viewportFraction:
                       (screenWidth - 60) / screenWidth, //当前item显示大小
@@ -74,6 +75,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         activeColor: Colors.white,
                       )),
                   autoplay: true,
+                  onTap: (index) {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return PhotoViewer(
+                        galleryItems: images,
+                        initIndex: index,
+                      );
+                    }));
+                  },
                 )),
             Container(
               color: Colors.redAccent,
